@@ -28,6 +28,17 @@ const resolvers = {
             const response =  MovieList.filter((movie) => movie.yearOfPublication <= 2015);
             return response
         }
+    },
+
+    Mutation: {
+        createUser: (parent, args) => {
+            const newUser = args.input;
+            const lastId = UserList[UserList.length - 1].id;
+            const newId = lastId + 1;
+            newUser.id = newId;
+            UserList.push(newUser);
+            return newUser;
+        }
     }
 }
 
